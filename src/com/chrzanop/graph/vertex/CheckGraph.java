@@ -1,9 +1,8 @@
-package com.chrzanop.graph;
+package com.chrzanop.graph.vertex;
 
-import java.util.Arrays;
 import java.util.List;
 
-import static com.chrzanop.graph.VertexFactory.setupVertex;
+import static com.chrzanop.graph.vertex.VertexFactory.setupVertex;
 
 public class CheckGraph {
 

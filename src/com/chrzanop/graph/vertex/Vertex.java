@@ -1,4 +1,4 @@
-package com.chrzanop.graph;
+package com.chrzanop.graph.vertex;
 
 import java.util.ArrayList;
 import java.util.List;
