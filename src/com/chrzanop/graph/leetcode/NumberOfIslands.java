@@ -1,4 +1,4 @@
-package com.chrzanop.leetcode;
+package com.chrzanop.graph.leetcode;
 
 public class NumberOfIslands {
 

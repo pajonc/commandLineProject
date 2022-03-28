@@ -1,4 +1,4 @@
-package com.chrzanop.leetcode;
+package com.chrzanop.graph.leetcode;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -56,7 +56,11 @@ public class FloodFill {
             Pair pair = queue.poll();
             image[pair.x][pair.y] = newColor;
             for (int[] shift : shifts) {
-                if (pair.x + shift[0] < 0 || pair.y + shift[1] < 0 || pair.x + shift[0] >= image.length || pair.y + shift[1] >= image[0].length || image[pair.x+shift[0]][pair.y+shift[1]] != color) {
+                if (pair.x + shift[0] < 0
+                        || pair.y + shift[1] < 0
+                        || pair.x + shift[0] >= image.length
+                        || pair.y + shift[1] >= image[0].length
+                        || image[pair.x+shift[0]][pair.y+shift[1]] != color) {
                     continue;
                 }
                 queue.offer(new Pair(pair.x + shift[0], pair.y + shift[1]));
