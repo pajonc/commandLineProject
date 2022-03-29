@@ -14,7 +14,7 @@ public class DrawTriangle {
         if (size == 1) {
             return 1;
         }
-        return size + 2;
+        return (size + 2) - 1;
     }
 
     public static void paint(int number) {
@@ -23,5 +23,7 @@ public class DrawTriangle {
         }
         System.out.println();
     }
+
+
 
 }
