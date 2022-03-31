@@ -2,10 +2,16 @@ package com.chrzanop.tree;
 
 public class Node {
 
-    private Node left, right;
-    private int data;
+    Node left, right;
+    int data;
 
     public Node(int data) {
+        this.data = data;
+    }
+
+    public Node(Node left, Node right, int data) {
+        this.left = left;
+        this.right = right;
         this.data = data;
     }
 

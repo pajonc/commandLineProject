@@ -7,8 +7,9 @@ public class RotatedSortedArray {
         int[] rotatedSortedArray = {4, 5, 6, 7, 0, 1, 2};
 
         System.out.println(findPivot(rotatedSortedArray));
+        System.out.println(findPivot(rotatedSortedArray, 0, rotatedSortedArray.length - 1));
 
-        System.out.println(indexOfTarget(rotatedSortedArray,7));
+        System.out.println(indexOfTarget(rotatedSortedArray, 7));
     }
 
     public static int findPivot(int[] array) {
@@ -25,6 +26,23 @@ public class RotatedSortedArray {
         }
         return left;
     }
+
+    public static int findPivot(int[] array, int left, int right) {
+
+        if (left == right) {
+            return left;
+        }
+
+        int mid = left + (right - left) / 2;
+        if (array[mid] > array[right]) {
+            left = mid + 1;
+        } else {
+            right = mid;
+        }
+        return findPivot(array, left, right);
+
+    }
+
 
     public static int indexOfTarget(int[] rotatedArray, int target) {
 
