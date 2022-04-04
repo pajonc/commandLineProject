@@ -16,24 +16,26 @@ public class PrimeNumber {
 
 
     public static int countPrimes(int n) {
-        boolean[] primes = new boolean[n];
-        for (int j = 0; j < primes.length ; j++) {
-            primes[j] = true;
+        boolean[] primes = new boolean[n+1];
+        for (int i = 0; i < primes.length; i++) {
+            primes[i] = true;
         }
 
-        for (int i = 2; i * i < primes.length; i++) {
+        primes[0] = false;
+        primes[1] = false;
 
-            if(primes[i]) {
-                for (int k = 0; k * i < primes.length ; k++) {
-                    primes[i *k] = false;
+        for (int i = 2; i * i < primes.length; i++) {
+            if (primes[i]) {
+                for (int j = i; j * i < primes.length; j++) {
+                    System.out.println(": " + j * i);
+                    primes[(i * j)] = false;
                 }
             }
-
         }
 
         int counter = 0;
         for (int m = 0; m < primes.length; m++) {
-            if(primes[m]) counter++;
+            if (primes[m]) counter++;
         }
 
         return counter;
