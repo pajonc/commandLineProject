@@ -15,7 +15,6 @@ public class TraverseDFS<T> {
         stack.push(vertex);
         while (!stack.isEmpty()) {
             Vertex<T> current = stack.pop();
-//            System.out.println(current.getData());
             if(!current.isVisited()) {
                 System.out.println(current.getData());
                 current.setVisited(true);
