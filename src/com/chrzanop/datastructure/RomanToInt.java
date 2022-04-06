@@ -9,6 +9,7 @@ public class RomanToInt {
 
         System.out.println(romantToInt("CIV"));
         System.out.println(romantToInt("MCMXCIV"));
+        System.out.println(romantToInt("III"));
 
     }
 
@@ -26,11 +27,10 @@ public class RomanToInt {
 
         int result = romanToArabic.get(roman.charAt(roman.length() - 1));
         for (int i = roman.length() - 2; i >= 0; i--) {
-            Integer val = romanToArabic.get(roman.charAt(i));
-            if (result > val) {
-                result = result - val;
+            if (romanToArabic.get(roman.charAt(i+1)) > romanToArabic.get(roman.charAt(i))) {
+                result = result - romanToArabic.get(roman.charAt(i));
             } else {
-                result = result + val;
+                result = result + romanToArabic.get(roman.charAt(i));
             }
 
         }
