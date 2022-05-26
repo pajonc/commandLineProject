@@ -4,9 +4,11 @@ public class Node {
 
     Node left, right;
     int data;
+    boolean visited = false;
 
     public Node(int data) {
         this.data = data;
+
     }
 
     public Node(Node left, Node right, int data) {
@@ -52,6 +54,14 @@ public class Node {
         return false;
     }
 
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
     public void printInOrder() {
         if (left != null) {
             left.printInOrder();
@@ -84,6 +94,48 @@ public class Node {
         System.out.println(rootNode.contains(9));
 
         rootNode.printInOrder();
+    }
+
+    public void printInOrder(Node node) {
+        if(node == null) {
+            return;
+        }
+        if (node.left != null) {
+            printInOrder(node.left);
+        }
+        System.out.println(node.data);
+        if (node.right != null) {
+            printInOrder(node.right);
+        }
+    }
+
+    public void printPreOrder(Node node) {
+        if(node == null) {
+            return;
+        }
+        System.out.println(node.data);
+        if (node.left != null) {
+            printPreOrder(node.left);
+        }
+
+        if (node.right != null) {
+            printPreOrder(node.right);
+        }
+    }
+
+
+    public void printPostOrder(Node node) {
+        if(node == null) {
+            return;
+        }
+        if (node.left != null) {
+            printPostOrder(node.left);
+        }
+
+        if (node.right != null) {
+            printPostOrder(node.right);
+        }
+        System.out.println(node.data);
     }
 
 
