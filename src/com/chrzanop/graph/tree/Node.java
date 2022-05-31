@@ -1,4 +1,4 @@
-package com.chrzanop.tree;
+package com.chrzanop.graph.tree;
 
 public class Node {
 

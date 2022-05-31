@@ -1,4 +1,4 @@
-package com.chrzanop.tree;
+package com.chrzanop.graph.tree;
 
 import java.util.*;
 
