@@ -43,6 +43,11 @@ public class PrimeNumber {
 
     public static void main(String[] args) {
 
+        for (int i = 2; i <= 7/2 ; i++) {
+            System.out.println("test");
+
+        }
+
         boolean a = isPrimeNumber(13);
         System.out.println(a);
         System.out.println("-----------------------");

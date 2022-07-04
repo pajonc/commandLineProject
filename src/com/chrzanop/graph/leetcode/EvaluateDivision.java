@@ -7,20 +7,40 @@ public class EvaluateDivision {
 
     public static void main(String[] args) {
         List<List<String>> equations = new ArrayList<>();
-        equations.add(Arrays.asList("a","b"));
-        equations.add(Arrays.asList("b","c"));
+        equations.add(Arrays.asList("a", "b"));
+        equations.add(Arrays.asList("b", "c"));
         double[] values = {2.0, 3.0};
         List<List<String>> queries = new ArrayList<>();
-        queries.add(Arrays.asList("a","c"));
-        queries.add(Arrays.asList("b","a"));
-        queries.add(Arrays.asList("a","e"));
-        queries.add(Arrays.asList("a","a"));
-        queries.add(Arrays.asList("x","x"));
+        queries.add(Arrays.asList("a", "c"));
+        queries.add(Arrays.asList("b", "a"));
+        queries.add(Arrays.asList("a", "e"));
+        queries.add(Arrays.asList("a", "a"));
+        queries.add(Arrays.asList("x", "x"));
 
         EvaluateDivision ed = new EvaluateDivision();
 
         double[] doubles = ed.calcEquation(equations, values, queries);
         System.out.println(doubles);
+
+
+        List<List<String>> equations2 = new ArrayList<>();
+        equations2.add(Arrays.asList("a", "b"));
+        equations2.add(Arrays.asList("b", "c"));
+        equations2.add(Arrays.asList("c", "d"));
+        equations2.add(Arrays.asList("c", "f"));
+        equations2.add(Arrays.asList("f", "g"));
+        equations2.add(Arrays.asList("a", "e"));
+        double[] values2 = {2.0, 3.0, 5.0 , 4, 2, 1};
+
+        List<List<String>> queries2 = new ArrayList<>();
+        queries2.add(Arrays.asList("a", "d"));
+        queries2.add(Arrays.asList("a", "g"));
+
+
+        double[] doubles2 = ed.calcEquation(equations2, values2, queries2);
+
+        System.out.println(doubles2);
+
 
     }
 
