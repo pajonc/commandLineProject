@@ -32,4 +32,31 @@ public class Kadane {
 
         return globalMax;
     }
+
+    public int maxSubarrayOption2(int[] array) {
+        if (array == null || array.length == 0) {
+            return -1;
+        }
+
+        int currentMax = 0, globalMax = 0;
+
+        for (int i = 0; i < array.length+1; i++) {
+
+            if (i == 0) {
+                currentMax = array[i];
+                globalMax = currentMax;
+                continue;
+            }
+            if(i == array.length) {
+                currentMax = Math.max(array[0], array[0] + array[i - 1]);
+                globalMax = Math.max(currentMax, globalMax);
+            }
+            currentMax = Math.max(array[i], array[i] + array[i - 1]);
+            globalMax = Math.max(currentMax, globalMax);
+
+        }
+
+
+        return globalMax;
+    }
 }

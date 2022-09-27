@@ -22,6 +22,14 @@ public class MaximumDepthOfBinaryTree {
         return treeNode;
     }
 
+//                3
+//              9   20
+//          11    13  15
+//
+
+
+
+
     public int maxDepth(TreeNode node) {
         if (node == null) {
             return 0;

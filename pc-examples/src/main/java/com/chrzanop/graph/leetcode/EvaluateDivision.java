@@ -41,7 +41,6 @@ public class EvaluateDivision {
 
         System.out.println(doubles2);
 
-
     }
 
 
