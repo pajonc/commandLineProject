@@ -15,9 +15,23 @@ public class ValidSubsequence {
         List<Integer> array = Arrays.asList(5, 1, 22, 25, 6, -1, 8, 10);
         List<Integer> sequence = Arrays.asList(1, 6, -1, 10);
 
-        System.out.println("First: "+isValidSubsequence(array, sequence));
-        System.out.println("Second: "+isValidSubsequence2(array, sequence));
-        System.out.println("Third: "+isValidSubsequence3(array, sequence));
+        System.out.println("First: " + isValidSubsequence(array, sequence));
+        System.out.println("Second: " + isValidSubsequence2(array, sequence));
+        System.out.println("Third: " + isValidSubsequence3(array, sequence));
+
+
+        int j = 0, k = 0, l = 0;
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println("j " + j);
+            System.out.println("k " + k);
+            System.out.println("l " + l);
+            j += 1;
+            System.out.println("jj "+j);
+            System.out.println("kk "+k++);
+            l = l + 1;
+            System.out.println("ll "+l);
+        }
 
     }
 
@@ -43,11 +57,11 @@ public class ValidSubsequence {
     public static boolean isValidSubsequence3(List<Integer> array, List<Integer> sequence) {
 
         int arrayIdx = 0, seqIdx = 0;
-        while(arrayIdx<array.size() && seqIdx < sequence.size()) {
-            if(array.get(arrayIdx).equals(sequence.get(seqIdx))) {
-                seqIdx+=1;
+        while (arrayIdx < array.size() && seqIdx < sequence.size()) {
+            if (array.get(arrayIdx).equals(sequence.get(seqIdx))) {
+                seqIdx += 1;
             }
-            arrayIdx+=1;
+            arrayIdx += 1;
         }
 
         return seqIdx == sequence.size();
@@ -59,7 +73,7 @@ public class ValidSubsequence {
 
         int seqIdx = 0;
         for (Integer element : array) {
-            if(seqIdx==sequence.size()) {
+            if (seqIdx == sequence.size()) {
                 break;
             }
             if (element == sequence.get(seqIdx)) {

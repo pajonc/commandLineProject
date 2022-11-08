@@ -3,6 +3,12 @@ package com.chrzanop.coding.algoexpert.arrays;
 import java.util.*;
 
 // sorted array gives us suggestion that complexity might be O(n)
+// we cannot modify input array
+// output should be also in ascending order as input
+// brute force solution iterate original array and fill result array with square values then sort resulted array
+// - time complexity O(n) + O(nlogn) --> O(n) < O(nlogn) so --> O(2nlogn) but 2 is constant so we have --> O(nlogn)  | O(n) space
+
+
 public class SortedSquaredArray {
 
     public static void main(String[] args) {
