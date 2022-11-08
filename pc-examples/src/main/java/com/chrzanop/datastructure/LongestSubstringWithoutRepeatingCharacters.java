@@ -6,7 +6,7 @@ import java.util.Set;
 public class LongestSubstringWithoutRepeatingCharacters {
 
     public static void main(String[] args) {
-        lengthOfLongestSubstring("abcabcbb");
+        System.out.println(lengthOfLongestSubstring("abcabcbb"));
     }
 
     public static int lengthOfLongestSubstring(String s) {
@@ -25,7 +25,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
             }
             while (window.contains(String.valueOf(chars[i]))) {
                 j++;
-                window = buildWindow(chars, j, i-1);
+                window = buildWindow(chars, j, i - 1);
             }
             window = buildWindow(chars, j, i);
             windows.add(window);

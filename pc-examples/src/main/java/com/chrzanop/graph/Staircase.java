@@ -39,7 +39,6 @@ public class Staircase {
 
         Node left, right;
         int data;
-        boolean visited = false;
 
         public Node(int data) {
             this.data = data;

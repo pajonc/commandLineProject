@@ -1,5 +1,7 @@
 package com.chrzanop.design.patterns.visitor;
 
+import java.util.Hashtable;
+
 public class Dress implements Visitable {
 
     private int price;
