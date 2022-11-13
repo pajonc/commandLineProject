@@ -38,7 +38,6 @@ public class SmallestDifference {
 
     // O(nlogn) + O(mlogm) time | O(1) space
     public static int[] smallestDifferenceSolution2(int[] arrayOne, int[] arrayTwo) {
-
         Arrays.sort(arrayOne);
         Arrays.sort(arrayTwo);
         int idxOne = 0, idxTwo = 0;
@@ -67,9 +66,39 @@ public class SmallestDifference {
                 idxTwo += 1;
             }
         }
-
-
         return new int[]{res1, res2};
+    }
+
+
+    // O(nlogn) + O(mlogm) time | O(1) space
+    public static int[] smallestDifferenceSolution3(int[] arrayOne, int[] arrayTwo) {
+
+        Arrays.sort(arrayOne);
+        Arrays.sort(arrayTwo);
+        int idxOne = 0, idxTwo = 0;
+        int smallest = Integer.MAX_VALUE;
+        int current = Integer.MAX_VALUE;
+        int[] smallestPair = new int[2];
+
+        while (idxOne < arrayOne.length && idxTwo < arrayTwo.length) {
+            int firstNum = arrayOne[idxOne];
+            int secondNum = arrayTwo[idxTwo];
+            if (firstNum < secondNum) {
+                current = secondNum - firstNum;
+                idxOne++;
+            } else if (secondNum < firstNum) {
+                current = firstNum - secondNum;
+                idxTwo++;
+            } else {
+                return new int[]{firstNum, secondNum};
+            }
+
+            if (smallest > current) {
+                smallest = current;
+                smallestPair = new int[]{firstNum, secondNum};
+            }
+        }
+        return smallestPair;
     }
 
 }

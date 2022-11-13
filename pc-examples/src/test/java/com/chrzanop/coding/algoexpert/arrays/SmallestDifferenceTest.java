@@ -24,6 +24,12 @@ public class SmallestDifferenceTest {
                         sd.smallestDifferenceSolution2(
                                 new int[] {-1, 5, 10, 20, 28, 3}, new int[] {26, 134, 135, 15, 17}),
                         expected));
+
+        assertTrue(
+                Arrays.equals(
+                        sd.smallestDifferenceSolution3(
+                                new int[] {-1, 5, 10, 20, 28, 3}, new int[] {26, 134, 135, 15, 17}),
+                        expected));
     }
 
 }
