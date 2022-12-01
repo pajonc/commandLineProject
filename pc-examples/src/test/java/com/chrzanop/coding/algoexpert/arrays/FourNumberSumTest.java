@@ -36,11 +36,11 @@ class FourNumberSumTest {
     @Test
     public void shouldPassTestCase() {
         FourNumberSum fns = new FourNumberSum();
-        List<Integer[]> output = fns.fourNumberSum(new int[]{7, 6, 4, -1, 1, 2}, 16);
-        List<Integer[]> quadruplets = new ArrayList<Integer[]>();
-        quadruplets.add(new Integer[]{7, 6, 4, -1});
-        quadruplets.add(new Integer[]{7, 6, 1, 2});
-        assertTrue(quadruplets.size() == output.size());
-        assertTrue(this.compare(quadruplets, output));
+        List<Integer[]> outputQuadruplets = fns.fourNumberSum(new int[]{7, 6, 4, -1, 1, 2}, 16);
+        List<Integer[]> expectedQuadruplets = new ArrayList<Integer[]>();
+        expectedQuadruplets.add(new Integer[]{7, 6, 4, -1});
+        expectedQuadruplets.add(new Integer[]{7, 6, 1, 2});
+        assertTrue(expectedQuadruplets.size() == outputQuadruplets.size());
+        assertTrue(this.compare(expectedQuadruplets, outputQuadruplets));
     }
 }

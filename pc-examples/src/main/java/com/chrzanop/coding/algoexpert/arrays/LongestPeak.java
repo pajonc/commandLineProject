@@ -18,6 +18,7 @@ public class LongestPeak {
     }
 
 
+    // O(n) time | O(1) space
     public static int longestPeak(int[] array) {
 
         int longestPeakLength = 0;

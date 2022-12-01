@@ -2,6 +2,7 @@ package com.chrzanop.coding.algoexpert.arrays;
 
 public class SubarraySort {
 
+    // O(n) time | O(1) space
     public static int[] subarraySort(int[] array) {
         int leftMin = Integer.MAX_VALUE;
         int rightMax = Integer.MIN_VALUE;
