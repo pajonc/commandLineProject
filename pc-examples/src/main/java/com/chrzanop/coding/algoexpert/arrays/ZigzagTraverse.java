@@ -32,6 +32,20 @@ public class ZigzagTraverse {
         while (!isOutOfBound(row, col, width, height)) {
             result.add(input.get(row).get(col));
             if (goingDown) {
+
+//                if(row==height) {
+//                    goingDown = false;
+//                    col++;
+//                } else if (col==0 && row < height) {
+//                    goingDown = false;
+//                    row++;
+//                }
+//                else {
+//                    col--;
+//                    row++;
+//                }
+
+
                 if (col == 0 || row == height) {
                     goingDown = false;
                     if (row == height) {
@@ -43,6 +57,7 @@ public class ZigzagTraverse {
                     col--;
                     row++;
                 }
+
             } else {
                 if (row == 0 || col == width) {
                     goingDown = true;
