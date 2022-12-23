@@ -83,9 +83,9 @@ public class Permutations {
                 continue;
             }
             used[i] = true;
-            List<Integer> newPermutation = new ArrayList<>(currentPermutation);
-            newPermutation.add(nums.get(i));
-            getPermutationsSecondApproach(nums, result, used, newPermutation);
+            List<Integer> newCurrentPermutation = new ArrayList<>(currentPermutation);
+            newCurrentPermutation.add(nums.get(i));
+            getPermutationsSecondApproach(nums, result, used, newCurrentPermutation);
             used[i] = false;
         }
 

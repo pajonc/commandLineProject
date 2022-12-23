@@ -44,7 +44,30 @@ public class PowerSet {
     }
 
 
-    public boolean contains(List<List<Integer>> arr1, int[] arr2) {
+    public static List<List<Integer>> powersetRec(List<Integer> array) {
+        return powersetRec(array, array.size()-1);
+    }
+
+    private static List<List<Integer>> powersetRec(List<Integer> array, int idx) {
+        if(idx<0) {
+            List<List<Integer>> emptySet = new ArrayList<List<Integer>>();
+            emptySet.add(new ArrayList<Integer>());
+            return emptySet;
+        }
+        int ele = array.get(idx);
+        List<List<Integer>> subsets = powersetRec(array, idx -1);
+        int length = subsets.size();
+        for (int i = 0; i < length; i++) {
+            List<Integer> currentSubset = new ArrayList<>(subsets.get(i));
+            currentSubset.add(ele);
+            subsets.add(currentSubset);
+        }
+        return subsets;
+    }
+
+
+
+    boolean contains(List<List<Integer>> arr1, int[] arr2) {
         for (List<Integer> subArr : arr1) {
             Collections.sort(subArr);
             if (compare(subArr, arr2)) {
@@ -54,7 +77,7 @@ public class PowerSet {
         return false;
     }
 
-    public boolean compare(List<Integer> arr1, int[] arr2) {
+    boolean compare(List<Integer> arr1, int[] arr2) {
         if (arr1.size() != arr2.length) {
             return false;
         }
