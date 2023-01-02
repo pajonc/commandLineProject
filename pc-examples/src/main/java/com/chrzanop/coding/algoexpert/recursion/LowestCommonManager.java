@@ -1,51 +1,75 @@
 package com.chrzanop.coding.algoexpert.recursion;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.assertTrue;
 
 public class LowestCommonManager {
 
 
-    static OrgChart lowestCommonManager = null;
-
-    public static OrgChart getLowestCommonManager(
+    // O(n) time | O(d) space where d is number of call stack size at maximum depth of tree and n is the number of tree vertices
+     public static OrgChart getLowestCommonManager(
             OrgChart topManager, OrgChart reportOne, OrgChart reportTwo) {
 
-        getLowestCommonManagerHelper(topManager, reportOne, reportTwo);
+        OrgInfo orgInfo = getLowestCommonManagerHelper(topManager, reportOne, reportTwo);
 
-        return lowestCommonManager;
+        return orgInfo.lowestCommonManager;
 
     }
 
 
-    private static int getLowestCommonManagerHelper(
-            OrgChart topManager, OrgChart reportOne, OrgChart reportTwo) {
-
-        if (topManager.directReports.size() == 0) {
-            if (topManager.name == reportOne.name || topManager.name == reportTwo.name) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
+    private static OrgInfo getLowestCommonManagerHelper(
+            OrgChart manager, OrgChart reportOne, OrgChart reportTwo) {
 
         int numberOfReports = 0;
-        for (OrgChart directReport : topManager.directReports) {
-            numberOfReports += getLowestCommonManagerHelper(directReport, reportOne, reportTwo);
-            if (numberOfReports == 2) {
-                lowestCommonManager = directReport;
-                return numberOfReports;
+        for (OrgChart directReport : manager.directReports) {
+            OrgInfo orgInfo = getLowestCommonManagerHelper(directReport, reportOne, reportTwo);
+            if (orgInfo.lowestCommonManager != null) {
+                return orgInfo;
             }
+            numberOfReports += orgInfo.numberOfReports;
         }
-        return numberOfReports;
+        System.out.println(manager.name);
+        if (manager == reportOne || manager == reportTwo) {
+            numberOfReports++;
+        }
 
+        OrgChart lowestCommonManager = numberOfReports == 2 ? manager : null;
+        OrgInfo orgInfo = new OrgInfo(lowestCommonManager, numberOfReports);
+
+        return orgInfo;
     }
 
+
+    static class OrgChart {
+        public char name;
+        public List<OrgChart> directReports;
+
+        OrgChart(char name) {
+            this.name = name;
+            this.directReports = new ArrayList<OrgChart>();
+        }
+
+        // This method is for testing only.
+        public void addDirectReports(OrgChart[] directReports) {
+            for (OrgChart directReport : directReports) {
+                this.directReports.add(directReport);
+            }
+        }
+    }
+
+    static class OrgInfo {
+        public OrgChart lowestCommonManager;
+        public int numberOfReports = 0;
+
+        OrgInfo(OrgChart lowestCommonManager, int numberOfReports) {
+            this.lowestCommonManager = lowestCommonManager;
+            this.numberOfReports = numberOfReports;
+        }
+    }
 
     @Test
     public void shouldPassCheck() {
@@ -66,6 +90,9 @@ public class LowestCommonManager {
         OrgChart lcm =
                 getLowestCommonManager(orgCharts.get('A'), orgCharts.get('E'), orgCharts.get('I'));
         assertTrue(lcm == orgCharts.get('B'));
+
+        System.out.println("--------------------------");
+
     }
 
 
@@ -79,22 +106,49 @@ public class LowestCommonManager {
         return orgCharts;
     }
 
+    /*
+        public static OrgChart getLowestCommonManagerIterative(
+            OrgChart topManager, OrgChart reportOne, OrgChart reportTwo) {
 
-    static class OrgChart {
-        public char name;
-        public List<OrgChart> directReports;
+        OrgInfo orgInfo = getLowestCommonManagerHelperIterative(topManager, reportOne, reportTwo);
 
-        OrgChart(char name) {
-            this.name = name;
-            this.directReports = new ArrayList<OrgChart>();
-        }
-
-        // This method is for testing only.
-        public void addDirectReports(OrgChart[] directReports) {
-            for (OrgChart directReport : directReports) {
-                this.directReports.add(directReport);
-            }
-        }
+        return orgInfo.lowestCommonManager;
     }
+
+    // not working due to wrong numberOfReports counter
+    private static OrgInfo getLowestCommonManagerHelperIterative(
+            OrgChart manager, OrgChart reportOne, OrgChart reportTwo) {
+
+        Deque<OrgChart> orgChartsStack = new LinkedList<>();
+        orgChartsStack.push(manager);
+        OrgInfo orgInfo = new OrgInfo(null, 0);
+        int numberOfReports = 0;
+        while (!orgChartsStack.isEmpty()) {
+            System.out.println(manager.name);
+            if (orgInfo.lowestCommonManager != null) {
+                return orgInfo;
+            }
+            if (manager == reportOne || manager == reportTwo) {
+                numberOfReports++;
+            }
+
+            for (int i = manager.directReports.size()-1; i >=0 ; i--) {
+                orgChartsStack.push(manager.directReports.get(i));
+
+            }
+
+            OrgChart lowestCommonManager = numberOfReports == 2 ? manager : null;
+            orgInfo = new OrgInfo(lowestCommonManager, numberOfReports);
+
+            manager = orgChartsStack.pop();
+        }
+
+
+        return orgInfo;
+    }
+
+
+     */
+
 
 }
