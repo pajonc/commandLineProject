@@ -18,6 +18,12 @@ public class StaircaseTraversal {
         int expected = 5;
         int actual = traversal.staircaseTraversalSlicingWindow(stairs, maxSteps);
         assertTrue(expected == actual);
+        int actual2 = traversal.staircaseTraversalMemoize(stairs, maxSteps);
+        assertTrue(expected == actual2);
+        int actual3 = traversal.staircaseTraversalDynamic(stairs, maxSteps);
+        assertTrue(expected == actual3);
+        int actual4 = traversal.staircaseTraversalSlicingWindow(stairs, maxSteps);
+        assertTrue(expected == actual4);
     }
 
 
