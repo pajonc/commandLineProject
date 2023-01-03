@@ -28,7 +28,7 @@ public class NthFibonacciNumber {
         return getNthFib(n - 1) + getNthFib(n - 2);
     }
 
-    //O(n) time | O(n) space for memoize
+    //O(n) time | O(n) space - memoize
     public static int getNthFib(int n, Map<Integer, Integer> memoize) {
         if (memoize.containsKey(n)) {
             return memoize.get(n);
@@ -38,7 +38,7 @@ public class NthFibonacciNumber {
         }
     }
 
-    //O(n) time | O(1) space for memoize
+    //O(n) time | O(1) space - dynamic programming
     public static int getNthFibLoop(int n) {
         int[] lastTwo = {0, 1};
         int counter = 3;
