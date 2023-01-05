@@ -102,6 +102,12 @@ public class InterweavingStrings {
         if (j < two.length() && two.charAt(j) == three.charAt(k)) {
             cache[i][j] = areInterwovenMemoize(one, two, three, i, j + 1, cache);
             return cache[i][j];
+// works as well as above snippet for j increment
+//            cache[i][j] = areInterwovenMemoize(one, two, three, i, j + 1, cache);
+//            if (cache[i][j]) {
+//                return true;
+//            }
+
         }
 
         cache[i][j] = false;
