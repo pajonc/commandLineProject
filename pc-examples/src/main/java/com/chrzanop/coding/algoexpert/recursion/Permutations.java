@@ -11,9 +11,10 @@ import static org.junit.Assert.assertTrue;
 public class Permutations {
 
     public static void main(String[] args) {
-        for (int i = 0; i < 2 ; i++) {
-            System.out.println("i: " +i );
-        }
+
+        List<List<Integer>> permutationsBasedOnSwapping = getPermutationsBasedOnSwapping((Arrays.asList(1, 2, 3)));
+        System.out.println(permutationsBasedOnSwapping.size());
+
     }
 
 
@@ -61,7 +62,6 @@ public class Permutations {
                 getPermutations(newArray, newPermutation, permutations);
             }
         }
-
     }
 
 
@@ -119,7 +119,30 @@ public class Permutations {
         }
     }
 
+    // O(n!n) time | O(n!n) space - swapping
+    public static List<List<Integer>> getPermutationsBasedOnSwapping(List<Integer> array) {
+        List<List<Integer>> permutations = new ArrayList<>();
+        getPermutationsBasedOnSwapping(0, array, permutations);
+        return permutations;
+    }
 
+    private static void getPermutationsBasedOnSwapping(int i, List<Integer> array, List<List<Integer>> permutations) {
+        if(i == array.size()-1) {
+            permutations.add(new ArrayList<>(array));
+        } else {
+            for (int j=i; j< array.size(); j++) {
+                swap(array, i, j);
+                getPermutationsBasedOnSwapping(i+1, array, permutations);
+                swap(array, i, j);
+            }
+        }
+    }
+
+    private static void swap(List<Integer> array, int i, int j) {
+        int tmp = array.get(i);
+        array.set(i, array.get(j));
+        array.set(j, tmp);
+    }
 
 
 
