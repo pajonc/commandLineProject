@@ -2,7 +2,9 @@ package com.chrzanop.coding.algoexpert.string;
 
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import static org.junit.Assert.assertTrue;
@@ -15,7 +17,28 @@ public class GenerateDocument {
         String document = "AlgoExpert is the Best!";
         boolean expected = true;
         boolean actual = new GenerateDocument().generateDocument(characters, document);
+        boolean actual2 = new GenerateDocument().generateDocument2(characters, document);
         assertTrue(expected == actual);
+        assertTrue(expected == actual2);
+    }
+
+
+    // O(n+m) time | O(c) space - where c is the number of unique characters in the characters string,
+    // n - number of characters, m is the length of the document
+    public boolean generateDocument2(String characters, String document) {
+        Map<Character,Integer> characterCounts = new HashMap<>();
+        for(int i=0;i<characters.length();i++) {
+            char character = characters.charAt(i);
+            characterCounts.put(character, characterCounts.getOrDefault(character, 0) + 1);
+        }
+        for(int i=0; i< document.length();i++) {
+            char character = document.charAt(i);
+            if(!characterCounts.containsKey(character) || characterCounts.get(character) == 0) {
+                return false;
+            }
+            characterCounts.put(character, characterCounts.get(character) - 1);
+        }
+        return true;
     }
 
 
