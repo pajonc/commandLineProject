@@ -1,4 +1,4 @@
-package com.chrzanop.coding.stacks;
+package com.chrzanop.coding.algoexpert.stacks;
 
 import org.junit.Test;
 
@@ -36,15 +36,18 @@ public class MinMaxStack {
     List<Map<String, Integer>> minMaxStack = new ArrayList<Map<String, Integer>>();
     List<Integer> stack = new ArrayList<>();
 
+    // O(1) time | O(1) space
     public int peek() {
         return stack.get(stack.size() - 1);
     }
 
+    // O(1) time | O(1) space
     public int pop() {
         minMaxStack.remove(minMaxStack.size() - 1);
         return stack.remove(stack.size() - 1);
     }
 
+    // O(1) time | O(1) space
     public void push(Integer number) {
         Map<String, Integer> newMinMax = new HashMap<String, Integer>();
         newMinMax.put("min", number);
@@ -59,10 +62,12 @@ public class MinMaxStack {
         stack.add(number);
     }
 
+    // O(1) time | O(1) space
     public int getMin() {
         return minMaxStack.get(minMaxStack.size() - 1).get("min");
     }
 
+    // O(1) time | O(1) space
     public int getMax() {
         return minMaxStack.get(minMaxStack.size() - 1).get("max");
     }
