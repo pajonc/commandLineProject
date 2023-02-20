@@ -9,7 +9,6 @@ import static org.junit.Assert.assertTrue;
 
 public class DepthFirstSearch {
 
-
     @Test
     public void TestCase1() {
         Node graph = new Node("A");
@@ -35,8 +34,6 @@ public class DepthFirstSearch {
         return true;
     }
 
-
-
     static class Node {
         String name;
         List<Node> children = new ArrayList<Node>();
@@ -46,34 +43,17 @@ public class DepthFirstSearch {
         }
 
         public List<String> depthFirstSearch(List<String> array) {
-
-            depthFirstSearch(array, this);
+            array.add(this.name);
+            for(Node child : children) {
+                child.depthFirstSearch(array);
+            }
             return array;
-
-        }
-
-        public void depthFirstSearch(List<String> array, Node node) {
-            array.add(node.getName());
-            if(node.getChildren().isEmpty()) {
-                return;
-            }
-            for(Node child : node.getChildren()) {
-                depthFirstSearch(array, child);
-            }
         }
 
         public Node addChild(String name) {
             Node child = new Node(name);
             children.add(child);
             return this;
-        }
-
-        public List<Node> getChildren() {
-            return this.children;
-        }
-
-        public String getName() {
-            return this.name;
         }
 
     }
