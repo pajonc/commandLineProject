@@ -1,14 +1,30 @@
 package com.chrzanop.graph.tree;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
 
 public class BinaryTreeTraversal {
+
+
+/*
+                     10
+                  /     \
+                 5       15
+               /  \     /  \
+              4    8   13  null
+*/
+
 
     public static void main(String[] args) {
         Node root = new Node(10);
         root.insert(5);
         root.insert(15);
         root.insert(8);
+//        root.insert(4);
+//        root.insert(13);
+
         System.out.println("%%%%%%%%%%%%%%%%% pre order");
         root.printPreOrder(root);
         System.out.println("%%%%%%%%%%%%%%%%% in order");
@@ -97,20 +113,20 @@ public class BinaryTreeTraversal {
         LinkedList<Node> stack = new LinkedList<>();
         LinkedList<Integer> output_arr = new LinkedList<>();
 
-        if(root == null) {
+        if (root == null) {
             return output_arr;
         }
         stack.add(root);
 
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             Node node = stack.pollLast();
             output_arr.add(node.data);
 
-            if(node.right != null) {
+            if (node.right != null) {
                 stack.add(node.right);
             }
 
-            if(node.left != null) {
+            if (node.left != null) {
                 stack.add(node.left);
             }
         }
@@ -118,7 +134,6 @@ public class BinaryTreeTraversal {
         return output_arr;
 
     }
-
 
 
     //     10
@@ -164,12 +179,12 @@ public class BinaryTreeTraversal {
 
         while (!stack.isEmpty() || current != null) {
 
-            if(current != null) {
+            if (current != null) {
                 stack.push(current);
                 current = current.left;
             } else {
                 Node peekNode = stack.peek();
-                if(peekNode.right != null && peekNode.right != lastVisitedNode) {
+                if (peekNode.right != null && peekNode.right != lastVisitedNode) {
                     current = peekNode.right;
                 } else {
                     list.add(peekNode.data);
