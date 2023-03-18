@@ -13,7 +13,7 @@ public class MinHeightBst {
 
     // O(n) time | O(n) space
     public static BST minHeightBstLinear(List<Integer> array) {
-        return constructMinHeightBst(array, 0, array.size() - 1, null);
+        return constructMinHeightBstLinear(array, 0, array.size() - 1, null);
     }
 
     public static BST constructMinHeightBstLinear(List<Integer> array, int startIdx, int endIdx, BST bst) {
