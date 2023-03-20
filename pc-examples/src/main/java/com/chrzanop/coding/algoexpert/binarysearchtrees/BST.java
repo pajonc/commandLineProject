@@ -124,6 +124,29 @@ public class BST {
     // recursively
     // Average: O(log(n)) time | O(log(n)) space
     // Worst: O(n) time | O(n) space - if tree not balanced
+    public BST insertR(int value) {
+        BST currentNode = this;
+        if (value < currentNode.value) {
+            if (currentNode.left == null) {
+                BST node = new BST(value);
+                currentNode.left = node;
+            } else {
+                currentNode.left.insertR(value);
+            }
+        } else {
+            if (currentNode.right == null) {
+                BST node = new BST(value);
+                currentNode.right = node;
+            } else {
+                currentNode.right.insertR(value);
+            }
+        }
+        return this;
+    }
+
+
+    // Average: O(log(n)) time | O(log(n)) space
+    // Worst: O(n) time | O(n) space - if tree not balanced
     public BST removeR(int value) {
         removeR(value, null);
         return this;
