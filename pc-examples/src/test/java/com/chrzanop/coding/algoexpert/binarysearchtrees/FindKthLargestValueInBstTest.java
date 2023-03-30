@@ -22,6 +22,9 @@ public class FindKthLargestValueInBstTest {
         FindKthLargestValueInBst fklv = new FindKthLargestValueInBst();
         int kthLargestValueInBst = fklv.findKthLargestValueInBst(root, k);
         assertTrue(expected == kthLargestValueInBst);
+
+        kthLargestValueInBst = fklv.findKthLargestValueInBstOptimal(root, k);
+        assertTrue(expected == kthLargestValueInBst);
     }
 
 }
