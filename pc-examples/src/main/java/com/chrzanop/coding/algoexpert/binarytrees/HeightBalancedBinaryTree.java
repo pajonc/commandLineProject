@@ -34,10 +34,10 @@ public class HeightBalancedBinaryTree {
 
         TreeInfo left = getTreeInfo(tree.left);
         TreeInfo right = getTreeInfo(tree.right);
-        int heightDifference = Math.abs(left.height - right.height);
         int height = Math.max(left.height, right.height) + 1;
         boolean isBalanced = left.isBalanced && right.isBalanced && Math.abs(left.height - right.height) <= 1;
-       return new TreeInfo(height, isBalanced);
+
+        return new TreeInfo(height, isBalanced);
     }
 
 }
