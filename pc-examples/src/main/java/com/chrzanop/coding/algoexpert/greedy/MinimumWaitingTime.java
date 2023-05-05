@@ -14,6 +14,18 @@ public class MinimumWaitingTime {
             int queriesLeft = queries.length - (i + 1);
             totalWaitingTime += duration * queriesLeft;
         }
+
+        // second option for computing total waiting time
+        /*
+        int totalWaitingTime = 0;
+        int previousWaitingTime = 0;
+        for (int i = 1; i < queries.length; i++) {
+            int duration = previousWaitingTime + queries[i-1];
+            previousWaitingTime = duration;
+            totalWaitingTime = totalWaitingTime + duration;
+        }
+         */
+
         return totalWaitingTime;
     }
 }
