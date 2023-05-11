@@ -1,8 +1,8 @@
-package com.chrzanop.coding.algoexpert.string;
+package com.chrzanop.coding.algoexpert.stacks;
 
 import org.junit.Test;
 
-import static com.chrzanop.coding.algoexpert.string.BalancedBrackets.balancedBrackets;
+import static com.chrzanop.coding.algoexpert.stacks.BalancedBrackets.balancedBrackets;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BalancedBracketsTest {

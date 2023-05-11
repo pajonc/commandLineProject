@@ -1,4 +1,4 @@
-package com.chrzanop.coding.algoexpert.string;
+package com.chrzanop.coding.algoexpert.stacks;
 
 import java.util.Deque;
 import java.util.HashMap;
