@@ -50,4 +50,23 @@ public class MajorityElement {
         else
             return -1;
     }
+
+    public int majorityElement_Algo2(int[] array) {
+        int answer = 0;
+        for (int currentBit = 0; currentBit < 32; currentBit++) {
+            int currentBitValue = 1 << currentBit;
+            int onesCount = 0;
+            for (int num : array) {
+                if ((num & currentBitValue) != 0) {
+                    onesCount++;
+                }
+            }
+
+            if (onesCount > array.length / 2) {
+                answer += currentBitValue;
+            }
+        }
+
+        return answer;
+    }
 }
