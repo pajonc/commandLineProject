@@ -7,6 +7,7 @@ import java.util.List;
 public class MaxSumIncreasingSubsequence {
 
 
+    // O(n^2) time | O(n) space
     public static List<List<Integer>> maxSumIncreasingSubsequence(int[] array) {
 
         int[] sums = new int[array.length];
