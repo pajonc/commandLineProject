@@ -28,13 +28,14 @@ public class FindNodesDistanceK {
     public ArrayList<Integer> findNodesDistanceK(BinaryTree tree, int target, int k) {
         ArrayList<Integer> result = new ArrayList<Integer>();
         Map<Integer, BinaryTree> parents = new HashMap<>();
-        traverse(tree, parents, null);
+        populateNodesToParents(tree, parents, null);
         BinaryTree targetTree = findTarget(tree, target, parents);
         Set<Integer> visited = new HashSet<>();
 
-        LinkedList<BinaryTreeDistance> queue = new LinkedList<>();
+        Queue<BinaryTreeDistance> queue = new LinkedList<>();
         BinaryTreeDistance btd = new BinaryTreeDistance(targetTree, 0);
         queue.offer(btd);
+        // breadth first search traverse
         while (queue.peek() != null) {
             BinaryTreeDistance binaryTreeDistance = queue.poll();
             if (binaryTreeDistance.distance == k) {
@@ -56,13 +57,13 @@ public class FindNodesDistanceK {
         return result;
     }
 
-    private void traverse(BinaryTree binaryTree, Map<Integer, BinaryTree> parents, BinaryTree parent) {
+    private void populateNodesToParents(BinaryTree binaryTree, Map<Integer, BinaryTree> parents, BinaryTree parent) {
         parents.put(binaryTree.value, parent);
         if (binaryTree.left != null) {
-            traverse(binaryTree.left, parents, binaryTree);
+            populateNodesToParents(binaryTree.left, parents, binaryTree);
         }
         if (binaryTree.right != null) {
-            traverse(binaryTree.right, parents, binaryTree);
+            populateNodesToParents(binaryTree.right, parents, binaryTree);
         }
     }
 
@@ -76,16 +77,4 @@ public class FindNodesDistanceK {
         }
     }
 
-//    private BinaryTree findTarget(BinaryTree binaryTree, int target) {
-//        if (binaryTree.value == target) {
-//            return binaryTree;
-//        }
-//        if (binaryTree.left != null) {
-//            findTarget(binaryTree.left, target);
-//        }
-//        if (binaryTree.right != null) {
-//            findTarget(binaryTree.right, target);
-//        }
-//        return null; // todo fix it
-//    }
 }
