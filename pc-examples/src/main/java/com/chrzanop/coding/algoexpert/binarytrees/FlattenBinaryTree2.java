@@ -9,6 +9,7 @@ public class FlattenBinaryTree2 {
 
     }
 
+    // O(n) time | O(n) space
     public static BinaryTree flattenBinaryTree(BinaryTree root) {
         List<BinaryTree> inOrderNodes = getNodesInOrder(root, new ArrayList<>());
         BinaryTree prevNode = null;
