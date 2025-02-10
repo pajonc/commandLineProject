@@ -5,10 +5,6 @@ import java.util.List;
 
 public class FlattenBinaryTree2 {
 
-    public static void main(String[] args) {
-
-    }
-
     // O(n) time | O(n) space
     public static BinaryTree flattenBinaryTree(BinaryTree root) {
         List<BinaryTree> inOrderNodes = getNodesInOrder(root, new ArrayList<>());
