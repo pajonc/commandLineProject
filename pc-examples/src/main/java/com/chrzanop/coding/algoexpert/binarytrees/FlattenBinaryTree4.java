@@ -49,27 +49,27 @@ public class FlattenBinaryTree4 {
 //
 //    }
 
-    private static BinaryTree getRightMost(BinaryTree node) {
-        if (node.right != null) {
-            getRightMost(node.right);
-        }
-        return node;
-    }
-
-    private static BinaryTree getLeftMost(BinaryTree node) {
-        if (node.left != null) {
-            getRightMost(node.left);
-        }
-        return node;
-    }
-
-    private static void getNodesInOrder(BinaryTree node) {
-        if (node != null) {
-            getNodesInOrder(node.left);
-            System.out.println(node.value);
-            getNodesInOrder(node.right);
-        }
-    }
+//    private static BinaryTree getRightMost(BinaryTree node) {
+//        if (node.right != null) {
+//            getRightMost(node.right);
+//        }
+//        return node;
+//    }
+//
+//    private static BinaryTree getLeftMost(BinaryTree node) {
+//        if (node.left != null) {
+//            getRightMost(node.left);
+//        }
+//        return node;
+//    }
+//
+//    private static void getNodesInOrder(BinaryTree node) {
+//        if (node != null) {
+//            getNodesInOrder(node.left);
+//            System.out.println(node.value);
+//            getNodesInOrder(node.right);
+//        }
+//    }
 
     // This is the class of the input root. Do not edit it.
     static class BinaryTree {
