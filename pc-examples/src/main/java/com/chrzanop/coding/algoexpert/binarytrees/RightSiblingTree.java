@@ -71,6 +71,7 @@ public class RightSiblingTree {
 
      if node==None:
      #impt because of test case
+     # continue;
      if queue and queue[-1][0]!=None:
      queue.append([None,level+1])
      continue
