@@ -17,6 +17,7 @@ public class SuffixTrieMain {
             populateSuffixTrieFrom(str);
         }
 
+        //O(n^2) time | O(n^2) space
         public void populateSuffixTrieFrom(String str) {
             for (int i = 0; i < str.length(); i++) {
                 insertSubstringStartingAt(i, str);
