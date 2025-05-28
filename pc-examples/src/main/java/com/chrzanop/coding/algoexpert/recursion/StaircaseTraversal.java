@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
@@ -16,6 +17,8 @@ public class StaircaseTraversal {
         int stairs = 4;
         int maxSteps = 2;
         int expected = 5;
+        int actual0 = traversal.staircaseTraversal(stairs, maxSteps);
+        assertTrue(expected == actual0);
         int actual = traversal.staircaseTraversalSlicingWindow(stairs, maxSteps);
         assertTrue(expected == actual);
         int actual2 = traversal.staircaseTraversalMemoize(stairs, maxSteps);
@@ -39,7 +42,6 @@ public class StaircaseTraversal {
         int numberOfWays = 0;
         for (int step = 1; step < Math.min(maxSteps, height) + 1; step++) {
             numberOfWays += numberOfWaysToTop(height - step, maxSteps);
-
         }
         return numberOfWays;
     }
@@ -105,6 +107,23 @@ public class StaircaseTraversal {
             waysToTop.add(currentNumberOfWays);
         }
         return waysToTop.get(height);
+    }
+
+    //O(n) time | O(n) space - memoize // staircase
+    public static int howManyStepsMemoize(int n, Map<Integer, Integer> memoize, List<Integer> steps) {
+        if (memoize.containsKey(n)) {
+            return memoize.get(n);
+        }
+        int result = 0;
+        for (int i = 0; i < steps.size(); i++) {
+            int target = n - steps.get(i);
+            if (target < 0) {
+                continue;
+            }
+            result += howManyStepsMemoize(target, memoize, steps);
+        }
+        memoize.put(n, result);
+        return result;
     }
 
 

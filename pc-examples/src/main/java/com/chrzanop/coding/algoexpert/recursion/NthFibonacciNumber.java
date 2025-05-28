@@ -1,6 +1,8 @@
 package com.chrzanop.coding.algoexpert.recursion;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
@@ -33,11 +35,13 @@ public class NthFibonacciNumber {
         if (memoize.containsKey(n)) {
             return memoize.get(n);
         } else {
-            memoize.put(n, getNthFib(n - 1, memoize) + getNthFib(n - 2, memoize));
-            return memoize.get(n);
+            int result1 = getNthFib(n - 1, memoize);
+            int result2 = getNthFib(n - 2, memoize);
+            int result = result1 + result2;
+            memoize.put(n, result);
+            return result;
         }
     }
-
     //O(n) time | O(1) space - dynamic programming
     public static int getNthFibLoop(int n) {
         int[] lastTwo = {0, 1};
