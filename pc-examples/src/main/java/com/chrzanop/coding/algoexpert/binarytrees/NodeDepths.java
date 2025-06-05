@@ -48,7 +48,9 @@ public class NodeDepths {
         if (root == null) {
             return 0;
         }
-        return depth + nodeDepths(root.left, depth + 1) + nodeDepths(root.right, depth + 1);
+        int depthLeft = nodeDepths(root.left, depth + 1);
+        int depthRight = nodeDepths(root.right, depth + 1);
+        return depth + depthLeft + depthRight;
     }
 
     static class BinaryTree {
