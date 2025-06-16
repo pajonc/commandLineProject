@@ -25,4 +25,13 @@ class NumberOfWaysToTraverseGraphTest {
         assertTrue(expected == actual);
     }
 
+    @Test
+    public void TestCase3() {
+        int width = 4;
+        int height = 3;
+        int expected = 10;
+        var actual = NumberOfWaysToTraverseGraph.numberOfWaysToTraverseGraphBottomUp(width, height);
+        assertTrue(expected == actual);
+    }
+
 }

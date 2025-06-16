@@ -12,6 +12,26 @@ public class NumberOfWaysToTraverseGraph {
         return numWaysSecond(width, height);
     }
 
+    // O(n*m) time | O(n*m) space - n width, m height of the graph (matrix)
+    public static int numberOfWaysToTraverseGraphBottomUp(int width, int height) {
+        int[][] numOfWays = new int[height][width];
+
+        for (int heightIdx = 0; heightIdx < height; heightIdx++) {
+            for (int widthIdx = 0; widthIdx < width; widthIdx++) {
+                if(heightIdx == 0 || widthIdx == 0) {
+                    numOfWays[heightIdx][widthIdx] = 1;
+                } else {
+
+                    int waysLeft = numOfWays[heightIdx][widthIdx - 1];
+                    int waysUp = numOfWays[heightIdx - 1][widthIdx];
+                    numOfWays[heightIdx][widthIdx]  = waysLeft + waysUp;
+                }
+            }
+        }
+
+        return numOfWays[height-1][width-1];
+    }
+
     private static int numWays(int width, int height, int coordinateX, int coordinateY) {
         if (width < 1 && height < 1) {
             return 0;
