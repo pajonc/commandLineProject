@@ -12,7 +12,9 @@ class LineThroughPointsTest {
                 new int[][] {{1, 1}, {2, 2}, {3, 3}, {0, 4}, {-2, 6}, {4, 0}, {2, 1}};
         int expected = 4;
         int actual = new LineThroughPoints().lineThroughPoints(input);
+        int actual2 = LineThroughPointsAlgo.lineThroughPoints(input);
         assertTrue(expected == actual);
+        assertTrue(expected == actual2);
     }
 
 }
