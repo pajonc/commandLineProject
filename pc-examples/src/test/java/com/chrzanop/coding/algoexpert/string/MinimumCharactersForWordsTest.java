@@ -18,4 +18,14 @@ public class MinimumCharactersForWordsTest {
         assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void TestCase2() {
+        String[] words = new String[]{"this", "that", "did", "them!", "a"};
+        char[] expected = new char[]{'t', 't', 'h', 'i', 's', 'a', 'd', 'd', 'e', 'm', '!'};
+        char[] actual = new MinimumCharactersForWords().minimumCharactersForWords(words);
+        Arrays.sort(expected);
+        Arrays.sort(actual);
+        assertArrayEquals(expected, actual);
+    }
+
 }

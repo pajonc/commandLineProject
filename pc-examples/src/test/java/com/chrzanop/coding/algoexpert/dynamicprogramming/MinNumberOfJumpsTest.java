@@ -12,4 +12,10 @@ class MinNumberOfJumpsTest {
         assertTrue(MinNumberOfJumps.minNumberOfJumps(input) == 4);
     }
 
+    @Test
+    public void TestCase2() {
+        int[] input = {3, 4, 2, 1, 2, 3, 7, 1, 1, 1, 3};
+        assertTrue(MinNumberOfJumps.minNumberOfJumps2(input) == 4);
+    }
+
 }
