@@ -28,6 +28,16 @@ class LongestCommonSubsequenceTest {
         );
     }
 
+    @Test
+    public void TestCase3() {
+        char[] expected = {'X', 'Y', 'Z', 'W'};
+        List<Character> actual = LongestCommonSubsequence.longestCommonSubsequenceAlgo1("ZXVVYZW", "XKYKZPW");
+//        assertArrayEquals(actual, expected);
+        assertTrue(
+                compare(actual, expected)
+        );
+    }
+
     private static boolean compare(List<Character> arr1, char[] arr2) {
         if (arr1.size() != arr2.length) {
             return false;
