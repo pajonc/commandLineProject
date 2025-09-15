@@ -17,4 +17,10 @@ class WaterAreaTest {
         int[] input = {0, 8, 0, 0, 5, 0, 0, 10, 0, 0, 1, 1, 0, 3};
         assertTrue(WaterArea.waterAreaAlgo1(input) == 48);
     }
+
+    @Test
+    public void TestCase3() {
+        int[] input = {0, 8, 0, 0, 5, 0, 0, 10, 0, 0, 1, 1, 0, 3};
+        assertTrue(WaterArea.waterAreaAlgo2(input) == 48);
+    }
 }
