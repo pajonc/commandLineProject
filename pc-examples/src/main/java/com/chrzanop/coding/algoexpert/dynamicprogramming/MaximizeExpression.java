@@ -65,7 +65,7 @@ public class MaximizeExpression {
         return maximumExpression;
     }
 
-    // O(n^2*n!) time | O(n*n!) space - permutations complexity
+    // O(n*n!) time | O(n) space - permutations complexity
     public int maximizeExpressionRec(int[] array) {
         if (array.length < 4) {
             return 0;
@@ -96,14 +96,13 @@ public class MaximizeExpression {
                 localSum = localSum + localValue;
             }
 
-//            System.out.println("i: " + i + " max: " + maximumExpression);
         }
 
         return maximumExpression;
     }
 
 
-    // O(n^2*n!) time | O(n*n!) space - permutations complexity
+    // O(n*n!) time | O(n*n!) space - permutations complexity
     public int maximizeExpressionRecursivelyBackTrack(int[] array) {
         if (array.length < 4) {
             return 0;
