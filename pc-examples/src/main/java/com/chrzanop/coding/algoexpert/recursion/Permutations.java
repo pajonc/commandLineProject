@@ -15,6 +15,9 @@ public class Permutations {
         List<List<Integer>> permutationsBasedOnSwapping = getPermutationsBasedOnSwapping((Arrays.asList(1, 2, 3)));
         System.out.println(permutationsBasedOnSwapping.size());
 
+        List<List<Integer>> permutations = getPermutations(Arrays.asList(1, 2, 3));
+        System.out.println(permutations.size());
+
     }
 
 
