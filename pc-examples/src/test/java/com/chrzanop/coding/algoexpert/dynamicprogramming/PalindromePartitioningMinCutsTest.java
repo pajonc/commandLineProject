@@ -11,4 +11,9 @@ class PalindromePartitioningMinCutsTest {
         assertTrue(PalindromePartitioningMinCuts.palindromePartitioningMinCuts("noonabbad") == 2);
     }
 
+    @Test
+    public void TestCase2() {
+        assertTrue(PalindromePartitioningMinCuts.palindromePartitioningMinCuts2("noonabbad") == 2);
+    }
+
 }
