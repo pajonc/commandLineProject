@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class LongestIncreasingSubsequenceTest {
 
     @Test
-    public void TestCase1() {
+    public void TestCase() {
         int[] expected = {-24, 2, 3, 5, 6, 35};
         assertTrue(compare(
                 LongestIncreasingSubsequence.longestIncreasingSubsequence(new int[] {
@@ -19,10 +19,20 @@ class LongestIncreasingSubsequenceTest {
     }
 
     @Test
+    public void TestCase1() {
+        int[] expected = {-24, 2, 3, 5, 6, 35};
+        assertTrue(compare(
+                LongestIncreasingSubsequence.longestIncreasingSubsequenceAlgo1(new int[] {
+                        5, 7, -24, 12, 10, 2, 3, 12, 5, 6, 35}),
+                expected
+        ));
+    }
+
+    @Test
     public void TestCase2() {
         int[] expected = {-24, 2, 3, 5, 6, 35};
         assertTrue(compare(
-                LongestIncreasingSubsequence.longestIncreasingSubsequence1(new int[] {
+                LongestIncreasingSubsequence.longestIncreasingSubsequenceAlgo2(new int[] {
                         5, 7, -24, 12, 10, 2, 3, 12, 5, 6, 35}),
                 expected
         ));

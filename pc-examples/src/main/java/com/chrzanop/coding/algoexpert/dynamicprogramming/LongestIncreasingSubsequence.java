@@ -6,9 +6,47 @@ import java.util.List;
 
 public class LongestIncreasingSubsequence {
 
+    // O(nlog(n)) time | O(n) space
+    public static List<Integer> longestIncreasingSubsequenceAlgo2(int[] array) {
+        int[] sequences = new int[array.length];
+        int[] indices = new int[array.length+1];
+        Arrays.fill(indices, Integer.MIN_VALUE);
+        int length = 0;
+        for (int i = 0; i < array.length; i++) {
+            int num = array[i];
+            int newLength = binarySearch(1, length, indices, array, num);
+            sequences[i] = indices[newLength-1];
+            indices[newLength] = i;
+            length = Math.max(length, newLength);
+        }
+        return buildSequenceAlgo2(array, sequences, indices[length]);
+    }
+
+    private static int binarySearch(int startIdx, int endIdx, int[] indicies, int[] array, int num) {
+        if(startIdx>endIdx) {
+            return startIdx;
+        }
+        int middleIdx = (startIdx+endIdx) / 2;
+        if( array[indicies[middleIdx]] < num ) {
+            startIdx = middleIdx+1;
+        } else {
+            endIdx = middleIdx -1;
+        }
+        return binarySearch(startIdx, endIdx, indicies, array, num);
+    }
+
+    private static List<Integer> buildSequenceAlgo2(int[] array, int[] sequences, int currentIdx){
+        List<Integer> sequence = new ArrayList<>();
+        while (currentIdx != Integer.MIN_VALUE) {
+            sequence.add(0, array[currentIdx]);
+            currentIdx = sequences[currentIdx];
+        }
+        return sequence;
+    }
+
 
     // O(n^2) time | O(n) space
-    public static List<Integer> longestIncreasingSubsequence1(int[] array) {
+    public static List<Integer> longestIncreasingSubsequenceAlgo1(int[] array) {
         int[] lengths = new int[array.length];
         Arrays.fill(lengths, 1);
         int[] sequences = new int[array.length];
