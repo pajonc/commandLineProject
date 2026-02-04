@@ -59,7 +59,43 @@ class SquareOfZeroesTest {
                 0, 1, 1, 1, 0, 1})));
         test.add(new ArrayList<Integer>(Arrays.asList(new Integer[] {
                 0, 0, 0, 0, 0, 1})));
-        assertTrue(SquareOfZeroes.squareOfZeroesAlgo(test));
+        assertTrue(SquareOfZeroes.squareOfZeroesAlgo1(test));
+    }
+
+    @Test
+    public void TestCase3Enhanced() {
+        List<List<Integer>> test = new ArrayList<List<Integer>>();
+        test.add(new ArrayList<Integer>(Arrays.asList(new Integer[] {
+                1, 1, 1, 0, 1, 0})));
+        test.add(new ArrayList<Integer>(Arrays.asList(new Integer[] {
+                0, 0, 0, 0, 0, 1})));
+        test.add(new ArrayList<Integer>(Arrays.asList(new Integer[] {
+                0, 1, 1, 1, 0, 1})));
+        test.add(new ArrayList<Integer>(Arrays.asList(new Integer[] {
+                0, 0, 0, 1, 0, 1})));
+        test.add(new ArrayList<Integer>(Arrays.asList(new Integer[] {
+                0, 1, 1, 1, 0, 1})));
+        test.add(new ArrayList<Integer>(Arrays.asList(new Integer[] {
+                0, 0, 0, 0, 0, 1})));
+        assertTrue(SquareOfZeroes.squareOfZeroesAlgo1Enhanced(test));
+    }
+
+    @Test
+    public void TestCase4() {
+        List<List<Integer>> test = new ArrayList<List<Integer>>();
+        test.add(new ArrayList<Integer>(Arrays.asList(new Integer[] {
+                1, 1, 1, 0, 1, 0})));
+        test.add(new ArrayList<Integer>(Arrays.asList(new Integer[] {
+                0, 0, 0, 0, 0, 1})));
+        test.add(new ArrayList<Integer>(Arrays.asList(new Integer[] {
+                0, 1, 1, 1, 0, 1})));
+        test.add(new ArrayList<Integer>(Arrays.asList(new Integer[] {
+                0, 0, 0, 1, 0, 1})));
+        test.add(new ArrayList<Integer>(Arrays.asList(new Integer[] {
+                0, 1, 1, 1, 0, 1})));
+        test.add(new ArrayList<Integer>(Arrays.asList(new Integer[] {
+                0, 0, 0, 0, 0, 1})));
+        assertTrue(SquareOfZeroes.squareOfZeroesAlgo2(test));
     }
 
 }
