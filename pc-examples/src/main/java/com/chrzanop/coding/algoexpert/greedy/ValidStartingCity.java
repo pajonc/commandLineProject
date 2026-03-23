@@ -17,15 +17,15 @@ public class ValidStartingCity {
             while (counter > 0) {
                 BigDecimal distance = new BigDecimal(distances[tempCity]);
                 fuelLeft = new BigDecimal(fuel[tempCity]).add(fuelLeft);
-                if (fuelLeft.multiply( new BigDecimal(mpg)).compareTo(distance) < 0) {
+                if (fuelLeft.multiply(new BigDecimal(mpg)).compareTo(distance) < 0) {
                     break;
                 }
                 BigDecimal fuelUsageForProvidedDistance = distance.divide(new BigDecimal(mpg));
-                fuelLeft = fuelLeft.subtract( fuelUsageForProvidedDistance );
+                fuelLeft = fuelLeft.subtract(fuelUsageForProvidedDistance);
                 counter--;
-                tempCity = (tempCity + 1 ) % numberOfCities;
+                tempCity = (tempCity + 1) % numberOfCities;
             }
-            if(counter==0) return city;
+            if (counter == 0) return city;
 
         }
 
@@ -42,7 +42,7 @@ public class ValidStartingCity {
             for (int currentIdx = startCityIdx;
                  currentIdx < startCityIdx + numberOfCities;
                  currentIdx++) {
-                if(milesRemaining < 0) {
+                if (milesRemaining < 0) {
                     continue;
                 }
 
@@ -53,7 +53,7 @@ public class ValidStartingCity {
                 milesRemaining += fuelFromCurrentCity * mpg - distanceToNextCity;
             }
 
-            if(milesRemaining >= 0) {
+            if (milesRemaining >= 0) {
                 return startCityIdx;
             }
         }
@@ -61,6 +61,28 @@ public class ValidStartingCity {
         return -1;
     }
 
+    // O(n) time | O(n) space- where n is the number of cities
+    public int validStartingCityAlgoN(int[] distances, int[] fuel, int mpg) {
+
+        int numberOfCities = distances.length;
+        int milesRemaining = 0;
+
+        int indexOfStartingCityCandidate = 0;
+        int milesRemainingAtStartingCityCandidate = 0;
+
+        for (int cityIdx = 1; cityIdx < numberOfCities; cityIdx++) {
+            int fuelFromPreviousCity = fuel[cityIdx - 1];
+            int distanceFromPreviousCity = distances[cityIdx - 1];
+
+            milesRemaining += fuelFromPreviousCity - distanceFromPreviousCity;
+            if ( milesRemaining < milesRemainingAtStartingCityCandidate) {
+                milesRemainingAtStartingCityCandidate = milesRemaining;
+                indexOfStartingCityCandidate = cityIdx;
+            }
+        }
+
+        return indexOfStartingCityCandidate;
+    }
 
 
 }
