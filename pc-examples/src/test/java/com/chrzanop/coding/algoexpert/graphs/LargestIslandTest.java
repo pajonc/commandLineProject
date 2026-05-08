@@ -14,4 +14,12 @@ class LargestIslandTest {
         assertTrue(expected == actual);
     }
 
+    @Test
+    public void TestCase2() {
+        var input = new int[][] {{0, 1, 1}, {0, 0, 1}, {1, 1, 0}};
+        var expected = 5;
+        var actual = new LargestIsland().largestIslandAlgo2(input);
+        assertTrue(expected == actual);
+    }
+
 }

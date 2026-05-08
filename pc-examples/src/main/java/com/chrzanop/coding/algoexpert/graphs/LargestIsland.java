@@ -1,11 +1,88 @@
 package com.chrzanop.coding.algoexpert.graphs;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class LargestIsland {
+
+    // O(w*h) time | O(w*h)
+    public int largestIslandAlgo2(int[][] matrix) {
+        List<Integer> isLandSizes = new ArrayList<>();
+        // isLandNumber starts at 2 to avoid overwriting existing 0s and 1s
+        int isLandNumber = 2;
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = 0; col < matrix[0].length; col++) {
+                if (matrix[row][col] == 0) {
+                    isLandSizes.add(getSizeFromNode(row, col, matrix, isLandNumber));
+                    isLandNumber++;
+                }
+            }
+        }
+
+        int maxSize = 0;
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = 0; col < matrix[0].length; col++) {
+                if (matrix[row][col] != 1) {
+                    continue;
+                }
+
+                List<List<Integer>> landNeighbors = getLandNeighbors(row, col, matrix);
+                Set<Integer> islands = new HashSet<>();
+                for (List<Integer> neighbor : landNeighbors) {
+                    islands.add(matrix[neighbor.get(0)][neighbor.get(1)]);
+                }
+
+                int size = 1;
+                for (Integer island : islands) {
+                    size += isLandSizes.get(island - 2);
+
+                }
+                maxSize = Math.max(maxSize, size);
+            }
+        }
+        return maxSize;
+
+    }
+
+    private Integer getSizeFromNode(int row, int col, int[][] matrix, int isLandNumber) {
+        int size = 0;
+        Stack<List<Integer>> nodesToExplore = new Stack<>();
+        nodesToExplore.push(Arrays.asList(row, col));
+
+        while (!nodesToExplore.isEmpty()) {
+            List<Integer> currentNode = nodesToExplore.pop();
+            int currentRow = currentNode.get(0);
+            int currentCol = currentNode.get(1);
+
+            if (matrix[currentRow][currentCol] != 0) {
+                continue;
+            }
+            matrix[currentRow][currentCol] = isLandNumber;
+            size++;
+
+            List<List<Integer>> newNeighbors = getLandNeighbors(currentRow, currentCol, matrix);
+            for (List<Integer> neighbor : newNeighbors) {
+                nodesToExplore.push(neighbor);
+            }
+        }
+        return size;
+    }
+
+    private List<List<Integer>> getLandNeighbors(int row, int col, int[][] matrix) {
+        List<List<Integer>> landNeighbors = new ArrayList<>();
+        if (row > 0 && matrix[row - 1][col] != 1) {
+            landNeighbors.add(Arrays.asList(row - 1, col));
+        }
+        if (row < matrix.length - 1 && matrix[row + 1][col] != 1) {
+            landNeighbors.add(Arrays.asList(row + 1, col));
+        }
+        if (col > 0 && matrix[row][col - 1] != 1) {
+            landNeighbors.add(Arrays.asList(row, col - 1));
+        }
+        if (col < matrix[0].length - 1 && matrix[row][col + 1] != 1) {
+            landNeighbors.add(Arrays.asList(row, col + 1));
+        }
+        return landNeighbors;
+    }
 
 
     // O(w^2*h^2) time | O(w*h) space - where w is the width and h height of the matrix
@@ -35,7 +112,7 @@ public class LargestIsland {
             int currentRow = currentNode.get(0);
             int currentCol = currentNode.get(1);
 
-            if(visited[currentRow][currentCol]) {
+            if (visited[currentRow][currentCol]) {
                 continue;
             }
             visited[currentRow][currentCol] = true;
