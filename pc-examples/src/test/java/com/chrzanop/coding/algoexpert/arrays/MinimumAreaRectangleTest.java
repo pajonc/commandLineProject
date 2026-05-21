@@ -24,5 +24,14 @@ class MinimumAreaRectangleTest {
         assertTrue(expected == actual);
     }
 
+    @Test
+    public void TestCase3() {
+        int[][] input = new int[][] {
+                {1, 5}, {5, 1}, {4, 2}, {2, 4}, {2, 2}, {1, 2}, {4, 5}, {2, 5}, {-1, -2}};
+        int expected = 3;
+        var actual = new MinimumAreaRectangle().minimumAreaRectangleAlgoSolution2(input);
+        assertTrue(expected == actual);
+    }
+
 
 }

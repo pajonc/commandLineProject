@@ -1,7 +1,6 @@
 package com.chrzanop.coding.algoexpert.arrays;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class MinimumAreaRectangle {
 
@@ -74,6 +73,60 @@ public class MinimumAreaRectangle {
 
     private String convertPointToString(int x, int y) {
         return String.valueOf(x) + ":" + String.valueOf(y);
+    }
+
+
+    public int minimumAreaRectangleAlgoSolution2(int[][] points) {
+        Map<Integer, int[]> columns = initializeColumns(points);
+        int minimumAreaFound = Integer.MAX_VALUE;
+        Map<String, Integer> edgesParallelToYAxis = new HashMap<>();
+
+        List<Integer> sortedColumns = new ArrayList<>(columns.keySet());
+        Collections.sort(sortedColumns);
+
+        for (Integer x : sortedColumns) {
+            int[] yValuesInCurrentColumn = columns.get(x);
+            Arrays.sort(yValuesInCurrentColumn);
+
+            for (int currentIdx = 0; currentIdx < yValuesInCurrentColumn.length; currentIdx++) {
+                int y2 = yValuesInCurrentColumn[currentIdx];
+                for (int previousIdx = 0; previousIdx < currentIdx; previousIdx++) {
+                    int y1 = yValuesInCurrentColumn[previousIdx];
+                    String pointString =  String.valueOf(y1) + ":" + String.valueOf(y2);
+                    if(edgesParallelToYAxis.containsKey(pointString)) {
+                        int currentArea = (x - edgesParallelToYAxis.get(pointString)) * (y2-y1);
+                        minimumAreaFound = Math.min(minimumAreaFound, currentArea);
+
+                    }
+                    edgesParallelToYAxis.put(pointString, x);
+                }
+            }
+        }
+
+        return minimumAreaFound != Integer.MAX_VALUE ? minimumAreaFound : 0;
+
+    }
+
+    private Map<Integer, int[]> initializeColumns(int[][] points) {
+        Map<Integer, int[]> columns = new HashMap<>();
+
+        for (int[] point : points) {
+            int x = point[0];
+            int y = point[1];
+
+            if (!columns.containsKey(x)) {
+                columns.put(x, new int[]{});
+            }
+
+            int[] column = columns.get(x);
+            int[] newColumn = new int[column.length + 1];
+            for (int i = 0; i < column.length; i++) {
+                newColumn[i] = column[i];
+            }
+            newColumn[column.length] = y;
+            columns.put(x, newColumn);
+        }
+        return columns;
     }
 
 }
