@@ -17,6 +17,14 @@ class ReverseLinkedListTest {
         assertTrue(arraysEqual(result, expected));
     }
 
+    @Test
+    public void TestCase2() {
+        ReverseLinkedList.LinkedList test = newLinkedList(new int[] { 1, 2, 3, 4, 5});
+        List<Integer> result = toArrayList(ReverseLinkedList.reverseListAI(test));
+        int[] expected = new int[] {5, 4, 3, 2, 1};
+        assertTrue(arraysEqual(result, expected));
+    }
+
     public ReverseLinkedList.LinkedList newLinkedList(int[] values) {
         ReverseLinkedList.LinkedList ll = new ReverseLinkedList.LinkedList(values[0]);
         ReverseLinkedList.LinkedList current = ll;
